@@ -1,89 +1,343 @@
-import React from "react";
+"use client";
+import { AnimatePresence, Variants, motion } from "framer-motion";
+import Image from "next/image";
+import { useState } from "react";
+import { FaCheck } from "react-icons/fa";
 import {
-  FaUser,
-  FaBirthdayCake,
-  FaHome,
-  FaPhone,
-  FaEnvelope,
-  FaGraduationCap,
-} from "react-icons/fa";
+  IoIosArrowBack,
+  IoIosArrowForward,
+  IoMdArrowRoundForward,
+} from "react-icons/io";
 
-interface IInfo {
-  title: string;
-  content: string;
-  icon: React.ReactNode;
+interface ProjectProps {
+  handleClick: () => void;
+  isClicked: boolean;
 }
 
-export default function Project() {
-  const infos = [
-    {
-      title: "이름",
-      content: "구민욱",
-      icon: <FaUser />,
+const images = ["/github.png", "/js.png", "/nextjs.png"];
+const secondImages = ["/github.png", "/js.png", "/nextjs.png"];
+
+export default function Project({ handleClick, isClicked }: ProjectProps) {
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [currentSecondImageIndex, setSecondCurrentImageIndex] = useState(0);
+  const [isBack, setIsBack] = useState(false);
+  const [isButtonDisabled, setIsButtonDisabled] = useState(false);
+
+  const handleNext = (number: number) => {
+    if (isButtonDisabled) return;
+    setIsBack(false);
+    setIsButtonDisabled(true);
+    if (number == 1) {
+      setCurrentImageIndex((prevIndex) =>
+        prevIndex === images.length - 1 ? prevIndex : prevIndex + 1
+      );
+    } else {
+      setSecondCurrentImageIndex((prevIndex) =>
+        prevIndex === images.length - 1 ? prevIndex : prevIndex + 1
+      );
+    }
+    setTimeout(() => {
+      setIsButtonDisabled(false);
+    }, 500);
+  };
+
+  const handlePrev = (number: number) => {
+    if (isButtonDisabled) return;
+    setIsBack(true);
+    setIsButtonDisabled(true);
+    if (number == 1) {
+      setCurrentImageIndex((prevIndex) =>
+        prevIndex === 0 ? prevIndex : prevIndex - 1
+      );
+    } else {
+      setSecondCurrentImageIndex((prevIndex) =>
+        prevIndex === 0 ? prevIndex : prevIndex - 1
+      );
+    }
+    setTimeout(() => {
+      setIsButtonDisabled(false);
+    }, 500);
+  };
+
+  const variants: Variants = {
+    start: (isBack) => ({
+      opacity: 0,
+      x: isBack ? -400 : 400,
+      transition: {},
+    }),
+    middle: {
+      opacity: 1,
+      x: 0,
     },
-    {
-      title: "생년월일",
-      content: "99.12.20",
-      icon: <FaBirthdayCake />,
-    },
-    {
-      title: "주소지",
-      content: "경상남도 창원시 의창구",
-      icon: <FaHome />,
-    },
-    {
-      title: "연락처",
-      content: "010-4530-8516",
-      icon: <FaPhone />,
-    },
-    {
-      title: "이메일",
-      content: "u6959@naver.com",
-      icon: <FaEnvelope />,
-    },
-    {
-      title: "학력",
-      content: "부경대학교(컴퓨터 공학부)",
-      icon: <FaGraduationCap />,
-    },
-  ];
+    end: (isBack) => ({
+      opacity: 0,
+      x: isBack ? 400 : -400,
+      transition: {},
+    }),
+  };
+
   return (
     <section
       id="project"
-      className="flex min-h-screen items-center justify-evenly relative bg-green-200"
+      className="flex flex-col min-h-screen items-center py-60 relative bg-green-200"
     >
-      <div className="flex-1 px-5 ">
-        <h2 className="absolute top-20 text-3xl font-bold">Project</h2>
-        <p className="font-semibold text-3xl mb-10 break-keep">
-          안녕하세요 무언가를 배움에 있어 끊임없이 &quot;왜?&quot; 라는 질문을
-          던지는 신입 프론트엔드 개발자 구민욱입니다.
-        </p>
-        <p className="text-2xl">
-          • 생활을 편리하고 자유롭게 만들기 위해 개발을 공부해왔습니다.
-        </p>
-        <p className="text-2xl">
-          • 한 분야의 진짜 전문가가 되는 것이 제 목표입니다.
-        </p>
-        <p className="text-2xl">
-          • 새로운 기술을 배움에 있어 두려움이 없고 개발 문서를 읽고 프로젝트에
-          적용할 수 있습니다.
-        </p>
-        <p className="text-2xl">
-          • 다양한 분야를 배우고 싶어하고 호기심이 많은 개발자입니다.
-        </p>
+      <h2 className="absolute top-20 left-0 text-3xl font-bold">Project</h2>
+      <div className="w-2/3 mb-40 flex flex-col items-center p-10 rounded-lg space-y-5 border-2 border-solid border-blue-400">
+        <h3 className="text-3xl font-bold">책 리뷰 및 커뮤니티 사이트</h3>
+        <span className="text-black text-opacity-40">
+          2024.05~2024.06 (1人 프로젝트)
+        </span>
+        <div className="flex  w-full justify-between">
+          <div className="flex flex-col w-full ">
+            <div className="relative h-96 w-full  overflow-hidden">
+              <AnimatePresence initial={false} custom={isBack}>
+                {images.map((src, index) =>
+                  index === currentImageIndex ? (
+                    <motion.div
+                      key={src}
+                      custom={isBack}
+                      initial="start"
+                      animate="middle"
+                      exit="end"
+                      variants={variants}
+                      transition={{ duration: 0.5 }}
+                      className="absolute top-0 left-0 h-full w-full"
+                    >
+                      <Image
+                        src={src}
+                        alt={`Slide ${index}`}
+                        fill
+                        style={{
+                          objectFit: "contain",
+                        }}
+                      />
+                    </motion.div>
+                  ) : null
+                )}
+              </AnimatePresence>
+            </div>
+
+            <div className="flex w-full items-center justify-center mt-10">
+              <button onClick={() => handlePrev(1)} className="  p-2">
+                <IoIosArrowBack className="size-6" />
+              </button>
+
+              <span>
+                {currentImageIndex + 1}/{images.length}
+              </span>
+              <button onClick={() => handleNext(1)} className="  p-2">
+                <IoIosArrowForward className="size-6" />
+              </button>
+            </div>
+          </div>
+          <div className="w-3/5 pl-10 flex flex-col text-lg">
+            <div className="space-y-5 flex flex-col mb-5">
+              <span>
+                책에 대해 소통하고 싶은 사람들을 위한 리뷰 및 커뮤니티
+                웹사이트입니다. 블로그의 책 리뷰는 한 사람만의 의견이고 책 ott
+                서비스를 이용하지 않는 사람은 해당 책의 리뷰를 보기 어렵기
+                때문에 이 사이트를 만들었습니다.
+              </span>
+              <span>
+                빠른 렌더링 속도와 SEO 최적화를 위해 Next.js를 사용했습니다.
+                tailwind를 사용해 스타일링을 빠르게 적용할 수 있었고
+                framer-motion을 통해 interactive함을 더했습니다.
+              </span>
+              <span>
+                RESTful한 API를 만드는 데에 초첨을 맞췄습니다. 인증에는
+                passport와 jwt를 사용했고 accessToken과 refreshToken을 따로
+                발급해 보안성을 높였습니다.
+              </span>
+            </div>
+            <div
+              onClick={handleClick}
+              className="p-2 cursor-pointer mb-5 flex items-center px-4 bg-black rounded-md w-fit text-blue-300"
+            >
+              펼쳐 보기 <IoMdArrowRoundForward className="size-6 mx-2" /> README
+            </div>
+            <ul>
+              <li className="flex items-start">
+                <span className="flex items-center w-40">
+                  <FaCheck className="mr-2" />
+                  주요 기능
+                </span>
+                <span style={{ width: "calc(100% - 10rem)" }}>
+                  책 별로 리뷰 확인 및 리뷰 작성, 책의 장르별로 커뮤니티 활동
+                  가능,팔로우 한 유저들의 활동을 sns처럼 모아보기
+                </span>
+              </li>
+
+              <li className="flex items-start">
+                <span className="flex items-center w-40">
+                  <FaCheck className="mr-2" />
+                  GitHub
+                </span>
+                <a
+                  className="underline text-blue-300   overflow-hidden whitespace-nowrap text-ellipsis"
+                  style={{ width: "calc(100% - 10rem)" }}
+                  href="https://github.com/khs08280/Book_Review"
+                >
+                  https://github.com/khs08280/Book_Review
+                </a>
+              </li>
+              <li className="flex  items-start justify-between">
+                <span className="flex items-center w-40">
+                  <FaCheck className="mr-2" />
+                  Frontend
+                </span>
+                <span style={{ width: "calc(100% - 10rem)" }}>
+                  Next.js, recoil, react-query, tailwind, framer-motion
+                </span>
+              </li>
+              <li className="flex items-start">
+                <span className="flex items-center w-40">
+                  <FaCheck className="mr-2" />
+                  Backend
+                </span>
+                <span style={{ width: "calc(100% - 10rem)" }}>
+                  Express.js, passport, jwt
+                </span>
+              </li>
+              <li className="flex items-start">
+                <span className="flex items-center w-40">
+                  <FaCheck className="mr-2" />
+                  DB
+                </span>
+                <span style={{ width: "calc(100% - 10rem)" }}>
+                  MongoDB, mongoose
+                </span>
+              </li>
+              <li className="flex items-start">
+                <span className="flex items-center w-40">
+                  <FaCheck className="mr-2" />
+                  Deployment
+                </span>
+                <span style={{ width: "calc(100% - 10rem)" }}>
+                  S3, cloudfront, EC2
+                </span>
+              </li>
+            </ul>
+          </div>
+        </div>
       </div>
-      <div className="flex-1 px-5">
-        <ul className="grid grid-cols-2 grid-rows-3 gap-5">
-          {infos.map((info: IInfo, index: number) => (
-            <li className="flex items-center space-y-3" key={index}>
-              <div className="text-3xl mr-5">{info.icon}</div>
-              <div className="flex flex-col">
-                <span className="text-xl font-semibold">{info.title}</span>
-                <span className="text-2xl">{info.content}</span>
-              </div>
-            </li>
-          ))}
-        </ul>
+      <div className="w-2/3 flex flex-col items-center p-10 rounded-lg space-y-5 border-2 border-solid border-blue-400">
+        <h3 className="text-3xl font-bold">
+          개발자들을 위한 프로젝트 매칭 사이트
+        </h3>
+        <span className="text-black text-opacity-40">
+          2023.05~2023.11 (3人 프로젝트)
+        </span>
+        <div className="flex  w-full justify-between">
+          <div className="flex flex-col w-full ">
+            <div className="relative h-96 w-full  overflow-hidden">
+              <AnimatePresence initial={false} custom={isBack}>
+                {secondImages.map((src, index) =>
+                  index === currentSecondImageIndex ? (
+                    <motion.div
+                      key={src}
+                      custom={isBack}
+                      initial="start"
+                      animate="middle"
+                      exit="end"
+                      variants={variants}
+                      transition={{ duration: 0.5 }}
+                      className="absolute top-0 left-0 h-full w-full"
+                    >
+                      <Image
+                        src={src}
+                        alt={`Slide ${index}`}
+                        fill
+                        style={{
+                          objectFit: "contain",
+                        }}
+                      />
+                    </motion.div>
+                  ) : null
+                )}
+              </AnimatePresence>
+            </div>
+            <div className="flex w-full items-center justify-center mt-10">
+              <button onClick={() => handlePrev(2)} className="  p-2">
+                <IoIosArrowBack className="size-6" />
+              </button>
+
+              <span>
+                {currentSecondImageIndex + 1}/{secondImages.length}
+              </span>
+              <button onClick={() => handleNext(2)} className="  p-2">
+                <IoIosArrowForward className="size-6" />
+              </button>
+            </div>
+          </div>
+          <div className="w-3/5 pl-10 flex flex-col text-lg">
+            <div className="space-y-5 flex flex-col mb-5">
+              <span>
+                개발자들의 사이드 프로젝트를 위한 팀원 매칭 웹사이트입니다. 기존
+                매칭 사이트에서의 아쉬운 점을 보완하여 만들었습니다.
+              </span>
+              <span>
+                처음 시작할 때는 CORS 문제부터 난관이었지만 하나하나
+                해결해나감으로써 팀원과의 소통, 백엔드로의 요청 방법 등 많은
+                것을 배울 수 있었던 프로젝트였습니다. styled-component를 사용해
+                코드 가독성을 높였습니다.
+              </span>
+            </div>
+            <div className="p-2 cursor-pointer mb-5 flex items-center px-4 bg-black rounded-md w-fit text-blue-300">
+              펼쳐 보기 <IoMdArrowRoundForward className="size-6 mx-2" /> README
+            </div>
+            <ul>
+              <li className="flex items-start">
+                <span className="flex items-center w-40">
+                  <FaCheck className="mr-2" />
+                  맡은 역할
+                </span>
+                <span style={{ width: "calc(100% - 10rem)" }}>
+                  FrontEnd(1人), 다자인
+                </span>
+              </li>
+              <li className="flex items-start">
+                <span className="flex items-center w-40">
+                  <FaCheck className="mr-2" />
+                  주요 기능
+                </span>
+                <span style={{ width: "calc(100% - 10rem)" }}>
+                  프로젝트 매칭을 위해 모집글을 작성, 모집하는 포지션과 스택,
+                  기간 등을 설정, 모집글을 작성한 유저와 실시간 대화 기능
+                </span>
+              </li>
+
+              <li className="flex items-start">
+                <span className="flex items-center w-40">
+                  <FaCheck className="mr-2" />
+                  GitHub
+                </span>
+                <a
+                  className="underline  text-blue-300  overflow-hidden whitespace-nowrap text-ellipsis"
+                  style={{ width: "calc(100% - 10rem)" }}
+                  href="https://github.com/khs08280/capstone"
+                >
+                  https://github.com/khs08280/capstone
+                </a>
+              </li>
+              <li className="flex  items-start justify-between">
+                <span className="flex items-center w-40">
+                  <FaCheck className="mr-2" />
+                  Frontend
+                </span>
+                <span style={{ width: "calc(100% - 10rem)" }}>
+                  React.js, redux, styled-component
+                </span>
+              </li>
+              <li className="flex items-start">
+                <span className="flex items-center w-40">
+                  <FaCheck className="mr-2" />
+                  Deployment
+                </span>
+                <span style={{ width: "calc(100% - 10rem)" }}>Netlify</span>
+              </li>
+            </ul>
+          </div>
+        </div>
       </div>
     </section>
   );
