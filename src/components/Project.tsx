@@ -1,6 +1,7 @@
 "use client";
 import { AnimatePresence, Variants, motion } from "framer-motion";
 import Image from "next/image";
+import Link from "next/link";
 import { useState } from "react";
 import { FaCheck } from "react-icons/fa";
 import {
@@ -14,8 +15,20 @@ interface ProjectProps {
   isClicked: boolean;
 }
 
-const images = ["/github.png", "/js.png", "/nextjs.png"];
-const secondImages = ["/github.png", "/js.png", "/nextjs.png"];
+const images = [
+  "/캡처.PNG",
+  "/모달.PNG",
+  "/커뮤니티.PNG",
+  "/한줄.PNG",
+  "/lighthouse-빌드후.PNG",
+];
+const secondImages = [
+  "/홈.PNG",
+  "/모집 1.PNG",
+  "/프로젝트1.PNG",
+  "/프로필변경1.PNG",
+  "/채팅.PNG",
+];
 
 export default function Project({ handleClick, isClicked }: ProjectProps) {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -82,7 +95,7 @@ export default function Project({ handleClick, isClicked }: ProjectProps) {
       className="flex flex-col min-h-screen items-center py-60 relative bg-green-200"
     >
       <h2 className="absolute top-20 left-0 text-3xl font-bold">Project</h2>
-      <div className="w-2/3 mb-40 flex flex-col items-center p-10 rounded-lg space-y-5 border-2 border-solid border-blue-400">
+      <div className="w-2/3 mb-20 flex flex-col items-center p-10 rounded-lg space-y-5 border-2 border-solid border-blue-400">
         <h3 className="text-3xl font-bold">책 리뷰 및 커뮤니티 사이트</h3>
         <span className="text-black text-opacity-40">
           2024.05~2024.06 (1人 프로젝트)
@@ -101,7 +114,7 @@ export default function Project({ handleClick, isClicked }: ProjectProps) {
                       exit="end"
                       variants={variants}
                       transition={{ duration: 0.5 }}
-                      className="absolute top-0 left-0 h-full w-full"
+                      className="absolute top-0 left-0 h-full w-full bg-black"
                     >
                       <Image
                         src={src}
@@ -149,12 +162,15 @@ export default function Project({ handleClick, isClicked }: ProjectProps) {
                 발급해 보안성을 높였습니다.
               </span>
             </div>
-            <div
-              onClick={handleClick}
-              className="p-2 cursor-pointer mb-5 flex items-center px-4 bg-black rounded-md w-fit text-blue-300"
-            >
-              펼쳐 보기 <IoMdArrowRoundForward className="size-6 mx-2" /> README
-            </div>
+            <Link href={"/bookReview"}>
+              <div
+                onClick={handleClick}
+                className="p-2 cursor-pointer mb-5 flex items-center px-4 bg-black rounded-md w-fit text-blue-300"
+              >
+                펼쳐 보기 <IoMdArrowRoundForward className="size-6 mx-2" />{" "}
+                README
+              </div>
+            </Link>
             <ul>
               <li className="flex items-start">
                 <span className="flex items-center w-40">
@@ -225,7 +241,7 @@ export default function Project({ handleClick, isClicked }: ProjectProps) {
           개발자들을 위한 프로젝트 매칭 사이트
         </h3>
         <span className="text-black text-opacity-40">
-          2023.05~2023.11 (3人 프로젝트)
+          2023.05~2023.11 (3人 프로젝트, Front 1人, Back 2人)
         </span>
         <div className="flex  w-full justify-between">
           <div className="flex flex-col w-full ">
@@ -241,7 +257,7 @@ export default function Project({ handleClick, isClicked }: ProjectProps) {
                       exit="end"
                       variants={variants}
                       transition={{ duration: 0.5 }}
-                      className="absolute top-0 left-0 h-full w-full"
+                      className="absolute top-0 left-0 h-full w-full bg-black"
                     >
                       <Image
                         src={src}
@@ -282,9 +298,12 @@ export default function Project({ handleClick, isClicked }: ProjectProps) {
                 코드 가독성을 높였습니다.
               </span>
             </div>
-            <div className="p-2 cursor-pointer mb-5 flex items-center px-4 bg-black rounded-md w-fit text-blue-300">
-              펼쳐 보기 <IoMdArrowRoundForward className="size-6 mx-2" /> README
-            </div>
+            <Link href={"/matching"}>
+              <div className="p-2 cursor-pointer mb-5 flex items-center px-4 bg-black rounded-md w-fit text-blue-300">
+                펼쳐 보기 <IoMdArrowRoundForward className="size-6 mx-2" />{" "}
+                README
+              </div>
+            </Link>
             <ul>
               <li className="flex items-start">
                 <span className="flex items-center w-40">
@@ -292,7 +311,7 @@ export default function Project({ handleClick, isClicked }: ProjectProps) {
                   맡은 역할
                 </span>
                 <span style={{ width: "calc(100% - 10rem)" }}>
-                  FrontEnd(1人), 다자인
+                  FrontEnd, 다자인
                 </span>
               </li>
               <li className="flex items-start">
@@ -325,7 +344,7 @@ export default function Project({ handleClick, isClicked }: ProjectProps) {
                   Frontend
                 </span>
                 <span style={{ width: "calc(100% - 10rem)" }}>
-                  React.js, redux, styled-component
+                  React.js, redux, styled-component, axios
                 </span>
               </li>
               <li className="flex items-start">
