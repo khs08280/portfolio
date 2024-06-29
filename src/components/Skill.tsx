@@ -1,4 +1,6 @@
 import Image from "next/image";
+import { motion } from "framer-motion";
+import SkillSection from "./SkillSection";
 
 export default function Skill() {
   const languages = [
@@ -123,100 +125,24 @@ export default function Skill() {
         "• 협업을 위한 기본적인 명령어와 동작 원리를 이해하고 있습니다. 또한 git-flow와 github-flow를 상황에 맞게 적용하려 공부하고 있습니다.",
     },
   ];
-  return (
-    <section
-      id="skill"
-      className="flex flex-col min-h-screen py-44 justify-center relative bg-red-300"
-    >
-      <h2 className="px-5 absolute top-20 text-3xl font-bold">Skill</h2>
-      <div className="space-y-20">
-        <h3 className="text-2xl font-semibold mb-10">Language</h3>
-        <ul className="grid grid-cols-2 grid-rows-auto gap-4 px-10">
-          {languages.map((language, index: number) => (
-            <li key={index} className="flex items-center w-full mb-10">
-              <div className="flex flex-col items-center mr-5">
-                <div className="relative w-36 h-36 rounded-2xl">
-                  <Image
-                    src={language.image}
-                    alt="Typescript Logo"
-                    fill
-                    style={{
-                      objectFit: "contain",
-                    }}
-                  />
-                </div>
-                <span className="text-lg mt-2 truncate">{language.skill}</span>
-              </div>
-              <span className="text-lg break-keep">{language.content}</span>
-            </li>
-          ))}
-        </ul>
-        <h3 className="text-2xl font-semibold">FrontEnd</h3>
-        <ul className="grid grid-cols-2 grid-rows-auto gap-4 px-10">
-          {frontends.map((frontend, index: number) => (
-            <li key={index} className="flex items-center w-full mb-10">
-              <div className="flex flex-col items-center mr-5">
-                <div className="relative w-36 h-36 rounded-2xl">
-                  <Image
-                    src={frontend.image}
-                    alt="Typescript Logo"
-                    fill
-                    style={{
-                      objectFit: "contain",
-                    }}
-                  />
-                </div>
-                <span className="text-lg mt-2 truncate">{frontend.skill}</span>
-              </div>
-              <span className="text-lg break-keep">{frontend.content}</span>
-            </li>
-          ))}
-        </ul>
 
-        <h3 className="text-2xl font-semibold mb-5">BackEnd & DB</h3>
-        <ul className="grid grid-cols-2 grid-rows-auto gap-4 px-10">
-          {backends.map((backend, index: number) => (
-            <li key={index} className="flex items-center w-full mb-10">
-              <div className="flex flex-col items-center mr-5">
-                <div className="relative w-36 h-36 rounded-2xl">
-                  <Image
-                    src={backend.image}
-                    alt="Typescript Logo"
-                    fill
-                    style={{
-                      objectFit: "contain",
-                    }}
-                  />
-                </div>
-                <span className="text-lg mt-2 truncate">{backend.skill}</span>
-              </div>
-              <span className="text-lg break-keep">{backend.content}</span>
-            </li>
-          ))}
-        </ul>
-        <h3 className="text-2xl font-semibold">DEPLOYMENT & VERSION CONTROL</h3>
-        <ul className="grid grid-cols-2 grid-rows-auto gap-4 px-10">
-          {deplyments.map((deployment, index: number) => (
-            <li key={index} className="flex items-center w-full mb-10">
-              <div className="flex flex-col items-center mr-5">
-                <div className="relative w-36 h-36 rounded-2xl">
-                  <Image
-                    src={deployment.image}
-                    alt="Typescript Logo"
-                    fill
-                    style={{
-                      objectFit: "contain",
-                    }}
-                  />
-                </div>
-                <span className="text-lg mt-2 truncate">
-                  {deployment.skill}
-                </span>
-              </div>
-              <span className="text-lg break-keep">{deployment.content}</span>
-            </li>
-          ))}
-        </ul>
+  return (
+    <section id="skill" className="py-20 bg-gary-100">
+      <div className="container mx-auto px-4">
+        <motion.h2
+          className="text-4xl font-bold mb-16 text-center text-gray-900"
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+        >
+          My Skills
+        </motion.h2>
+        <SkillSection title="Languages" skills={languages} />
+        <SkillSection title="Frontend" skills={frontends} />
+        <SkillSection title="Backend & Database" skills={backends} />
+        <SkillSection
+          title="Deployment & Version Control"
+          skills={deplyments}
+        />
       </div>
     </section>
   );

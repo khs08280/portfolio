@@ -92,9 +92,15 @@ export default function Project({ handleClick, isClicked }: ProjectProps) {
   return (
     <section
       id="project"
-      className="flex flex-col min-h-screen items-center py-60 relative bg-green-200"
+      className="flex flex-col min-h-screen items-center py-60 relative bg-gray-50 "
     >
-      <h2 className="absolute top-20 left-0 text-3xl font-bold">Project</h2>
+      <motion.h2
+        className="text-4xl font-bold mb-16 text-center text-gray-900"
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+      >
+        Projects
+      </motion.h2>
       <div className="w-2/3 mb-20 flex flex-col items-center p-10 rounded-lg space-y-5 border-2 border-solid border-blue-400">
         <h3 className="text-3xl font-bold">책 리뷰 및 커뮤니티 사이트</h3>
         <span className="text-black text-opacity-40">
