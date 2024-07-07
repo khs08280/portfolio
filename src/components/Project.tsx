@@ -1,7 +1,6 @@
 "use client";
 import { AnimatePresence, Variants, motion } from "framer-motion";
 import Image from "next/image";
-import Link from "next/link";
 import { useState } from "react";
 import { FaCheck } from "react-icons/fa";
 import {
@@ -16,18 +15,22 @@ interface ProjectProps {
 }
 
 const images = [
-  "/캡처.PNG",
-  "/모달.PNG",
-  "/커뮤니티.PNG",
-  "/한줄.PNG",
-  "/lighthouse-빌드후.PNG",
+  process.env.STATE === "production" ? "/portfolio/캡처.PNG" : "/캡처.PNG",
+  process.env.STATE === "production" ? "/portfolio/모달.PNG" : "/모달.PNG",
+  process.env.STATE === "production"
+    ? "/portfolio/커뮤니티.PNG"
+    : "/커뮤니티.PNG",
+  process.env.STATE === "production" ? "/portfolio/한줄.PNG" : "/한줄.PNG",
 ];
 const secondImages = [
-  "/홈.PNG",
-  "/모집 1.PNG",
-  "/프로젝트1.PNG",
-  "/프로필변경1.PNG",
-  "/채팅.PNG",
+  process.env.STATE === "production" ? "/portfolio/홈.PNG" : "/홈.PNG",
+  process.env.STATE === "production" ? "/portfolio/모집 1.PNG" : "모집 1.PNG",
+  process.env.STATE === "production"
+    ? "/portfolio/프로젝트1.PNG"
+    : "/프로젝트1.PNG",
+  process.env.STATE === "production"
+    ? "/portfolio/프로필변경1.PNG"
+    : "/프로필변경1.PNG",
 ];
 
 export default function Project({ handleClick, isClicked }: ProjectProps) {
@@ -92,7 +95,7 @@ export default function Project({ handleClick, isClicked }: ProjectProps) {
   return (
     <section
       id="project"
-      className="flex flex-col min-h-screen items-center py-60 relative bg-gray-50 "
+      className="flex flex-col px-1 sm:px-0 min-h-screen items-center py-60 relative bg-gray-50 "
     >
       <motion.h2
         className="text-4xl font-bold mb-16 text-center text-gray-900"
@@ -101,12 +104,14 @@ export default function Project({ handleClick, isClicked }: ProjectProps) {
       >
         Projects
       </motion.h2>
-      <div className="w-2/3 mb-20 flex flex-col items-center p-10 rounded-lg space-y-5 border-2 border-solid border-blue-400">
-        <h3 className="text-3xl font-bold">책 리뷰 및 커뮤니티 사이트</h3>
+      <div className="w-full lg:w-2/3 mb-20 flex flex-col shadow-xl items-center p-10 rounded-lg space-y-5 border-2 border-solid border-blue-400">
+        <h3 className="text-3xl font-bold text-center">
+          책 리뷰 및 커뮤니티 사이트
+        </h3>
         <span className="text-black text-opacity-40">
           2024.05~2024.06 (1人 프로젝트)
         </span>
-        <div className="flex  w-full justify-between">
+        <div className="flex flex-col sm:flex-row  w-full justify-between">
           <div className="flex flex-col w-full ">
             <div className="relative h-96 w-full  overflow-hidden">
               <AnimatePresence initial={false} custom={isBack}>
@@ -149,12 +154,12 @@ export default function Project({ handleClick, isClicked }: ProjectProps) {
               </button>
             </div>
           </div>
-          <div className="w-3/5 pl-10 flex flex-col text-lg">
-            <div className="space-y-5 flex flex-col mb-5">
+          <div className="w-full sm:w-3/5 sm:pl-10 flex flex-col text-lg">
+            <div className="space-y-5 mt-5 sm:mt-0 flex flex-col mb-5">
               <span>
                 책에 대해 소통하고 싶은 사람들을 위한 리뷰 및 커뮤니티
                 웹사이트입니다. 블로그의 책 리뷰는 한 사람만의 의견이고 책 ott
-                서비스를 이용하지 않는 사람은 해당 책의 리뷰를 보기 어렵기
+                서비스를 이용하지 않는 사람은 원하는 책의 리뷰를 보기 어렵기
                 때문에 이 사이트를 만들었습니다.
               </span>
               <span>
@@ -168,15 +173,15 @@ export default function Project({ handleClick, isClicked }: ProjectProps) {
                 발급해 보안성을 높였습니다.
               </span>
             </div>
-            <Link href={"/bookReview"}>
+            <a target="blank" href="https://github.com/khs08280/Book_Review">
               <div
                 onClick={handleClick}
                 className="p-2 cursor-pointer mb-5 flex items-center px-4 bg-black rounded-md w-fit text-blue-300"
               >
-                펼쳐 보기 <IoMdArrowRoundForward className="size-6 mx-2" />{" "}
-                README
+                README에서 자세히 보기{" "}
+                <IoMdArrowRoundForward className="size-6 mx-2" />{" "}
               </div>
-            </Link>
+            </a>
             <ul>
               <li className="flex items-start">
                 <span className="flex items-center w-40">
@@ -195,6 +200,7 @@ export default function Project({ handleClick, isClicked }: ProjectProps) {
                   GitHub
                 </span>
                 <a
+                  target="blank"
                   className="underline text-blue-300   overflow-hidden whitespace-nowrap text-ellipsis"
                   style={{ width: "calc(100% - 10rem)" }}
                   href="https://github.com/khs08280/Book_Review"
@@ -242,14 +248,14 @@ export default function Project({ handleClick, isClicked }: ProjectProps) {
           </div>
         </div>
       </div>
-      <div className="w-2/3 flex flex-col items-center p-10 rounded-lg space-y-5 border-2 border-solid border-blue-400">
-        <h3 className="text-3xl font-bold">
+      <div className="w-full lg:w-2/3 flex flex-col items-center shadow-xl p-10 rounded-lg space-y-5 border-2 border-solid border-blue-400">
+        <h3 className="text-3xl font-bold  text-center sm:text-start">
           개발자들을 위한 프로젝트 매칭 사이트
         </h3>
         <span className="text-black text-opacity-40">
           2023.05~2023.11 (3人 프로젝트, Front 1人, Back 2人)
         </span>
-        <div className="flex  w-full justify-between">
+        <div className=" flex flex-col sm:flex-row  w-full justify-between">
           <div className="flex flex-col w-full ">
             <div className="relative h-96 w-full  overflow-hidden">
               <AnimatePresence initial={false} custom={isBack}>
@@ -263,7 +269,7 @@ export default function Project({ handleClick, isClicked }: ProjectProps) {
                       exit="end"
                       variants={variants}
                       transition={{ duration: 0.5 }}
-                      className="absolute top-0 left-0 h-full w-full bg-black"
+                      className="absolute top-0 left-0 h-full w-full bg-black place-content-end "
                     >
                       <Image
                         src={src}
@@ -291,25 +297,25 @@ export default function Project({ handleClick, isClicked }: ProjectProps) {
               </button>
             </div>
           </div>
-          <div className="w-3/5 pl-10 flex flex-col text-lg">
+          <div className="w-full sm:w-3/5 sm:pl-10 flex flex-col mt-5 sm:mt-0 text-lg">
             <div className="space-y-5 flex flex-col mb-5">
               <span>
                 개발자들의 사이드 프로젝트를 위한 팀원 매칭 웹사이트입니다. 기존
                 매칭 사이트에서의 아쉬운 점을 보완하여 만들었습니다.
               </span>
               <span>
-                처음 시작할 때는 CORS 문제부터 난관이었지만 하나하나
-                해결해나감으로써 팀원과의 소통, 백엔드로의 요청 방법 등 많은
-                것을 배울 수 있었던 프로젝트였습니다. styled-component를 사용해
-                코드 가독성을 높였습니다.
+                처음 시작할 때는 CORS 문제부터 난관이었지만 하나하나 해결해
+                나감으로써 팀원과의 소통, 백엔드로의 요청 방법 등 많은 것을 배울
+                수 있었던 프로젝트였습니다. styled-component를 사용해 코드
+                가독성을 높였습니다.
               </span>
             </div>
-            <Link href={"/matching"}>
+            <a target="black" href="https://github.com/khs08280/capstone">
               <div className="p-2 cursor-pointer mb-5 flex items-center px-4 bg-black rounded-md w-fit text-blue-300">
-                펼쳐 보기 <IoMdArrowRoundForward className="size-6 mx-2" />{" "}
-                README
+                README에서 자세히 보기{" "}
+                <IoMdArrowRoundForward className="size-6 mx-2" />{" "}
               </div>
-            </Link>
+            </a>
             <ul>
               <li className="flex items-start">
                 <span className="flex items-center w-40">
@@ -337,6 +343,7 @@ export default function Project({ handleClick, isClicked }: ProjectProps) {
                   GitHub
                 </span>
                 <a
+                  target="blank"
                   className="underline  text-blue-300  overflow-hidden whitespace-nowrap text-ellipsis"
                   style={{ width: "calc(100% - 10rem)" }}
                   href="https://github.com/khs08280/capstone"

@@ -3,7 +3,7 @@ export default function Footer() {
   return (
     <footer
       id="info"
-      className="flex flex-col items-center justify-center relative py-20 bg-gray-200"
+      className="flex flex-col items-center justify-center relative px-5 sm:px-0 py-20 bg-gray-200"
     >
       <ul className="text-lg text-center mt-5 space-x-3 flex text-black text-opacity-40">
         {list.map((item: string, index: number) => (

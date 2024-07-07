@@ -1,9 +1,13 @@
 "use client";
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 export default function SideNav() {
-  const list = ["INFO", "SKILL", "PROJECT", "CERTIFICATE & GITHUB"];
+  const list = useMemo(
+    () => ["INFO", "SKILL", "PROJECT", "CERTIFICATE & GITHUB"],
+    []
+  );
+
   const [activeSection, setActiveSection] = useState("");
 
   useEffect(() => {
@@ -39,16 +43,20 @@ export default function SideNav() {
         if (section) sectionObserver.unobserve(section);
       });
     };
-  }, []);
+  }, [list]);
 
   return (
-    <nav className="bg-gradient-to-b from-slate-800 to-slate-600 w-80 flex flex-col items-center py-10 fixed h-full top-0 left-0 overflow-hidden shadow-lg">
+    <nav className="bg-gradient-to-b from-slate-800 to-slate-600 w-80 hidden lg:flex flex-col items-center py-10 fixed h-full top-0 left-0 overflow-hidden shadow-lg">
       <div className="rounded-full overflow-hidden border-4 border-white shadow-md mb-8">
         <Image
-          src="/KakaoTalk_20200910_105747897.jpg"
+          src={
+            process.env.STATE === "production"
+              ? "/portfolio/취업사진.JPG"
+              : "/취업사진.JPG"
+          }
           alt="profile"
-          width={160}
-          height={320}
+          width={200}
+          height={270}
           className="object-cover"
         />
       </div>

@@ -33,14 +33,18 @@ export default function Certificate() {
               </div>
               <div className="relative w-full h-80 mb-6">
                 <Image
-                  src="/certificate.png"
+                  src={
+                    process.env.STATE === "production"
+                      ? "/portfolio/certificate.png"
+                      : "/certificate.png"
+                  }
                   alt="Information Processing Engineer Certificate"
-                  layout="fill"
-                  objectFit="contain"
+                  width={200}
+                  height={200}
                   className="rounded-lg"
                 />
               </div>
-              <p className="text-gray-600">
+              <p className="text-gray-600 text-lg">
                 • 이론적인 실무 지식을 얻기 위해 취득했습니다.
               </p>
             </div>
@@ -68,17 +72,20 @@ export default function Certificate() {
                 github.com/khs08280
               </Link>
               <Image
-                src="/깃허브프로필.PNG"
+                src={
+                  process.env.STATE === "production"
+                    ? "/portfolio/깃허브프로필.PNG"
+                    : "/깃허브프로필.PNG"
+                }
                 alt="깃허브 프로필"
                 width={300}
                 height={100}
-                objectFit="contain"
                 className="rounded-lg"
               />
               <ul className="space-y-3 text-lg text-gray-600">
-                <li>• 프로젝트의 소스 코드 저장소입니다.</li>
                 <li>
-                  • 팀 프로젝트부터 혼자 공부하기 위해 진행한 프로젝트의 코드
+                  • 팀 프로젝트부터 혼자 공부하기 위해 진행한 프로젝트의 소스
+                  코드 저장소입니다.
                 </li>
                 <li>• 프로필에는 간단한 자기소개를 작성했습니다.</li>
                 <li>• 최근 프로젝트부터 꾸준히 커밋 중입니다.</li>
