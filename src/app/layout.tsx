@@ -16,7 +16,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className=" scroll-smooth">
-      <link rel="icon" href="/취업사진.JPG" />
+      <link rel="icon" href="/portfolio/취업사진.JPG" />
       <body className={inter.className}>{children}</body>
     </html>
   );

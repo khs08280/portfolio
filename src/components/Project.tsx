@@ -108,7 +108,7 @@ export default function Project({ handleClick, isClicked }: ProjectProps) {
         <h3 className="text-3xl font-bold text-center">
           책 리뷰 및 커뮤니티 사이트
         </h3>
-        <span className="text-black text-opacity-40">
+        <span className="text-black text-opacity-40 text-center">
           2024.05~2024.06 (1人 프로젝트)
         </span>
         <div className="flex flex-col sm:flex-row  w-full justify-between">
@@ -252,7 +252,7 @@ export default function Project({ handleClick, isClicked }: ProjectProps) {
         <h3 className="text-3xl font-bold  text-center sm:text-start">
           개발자들을 위한 프로젝트 매칭 사이트
         </h3>
-        <span className="text-black text-opacity-40">
+        <span className="text-black text-opacity-40 text-center">
           2023.05~2023.11 (3人 프로젝트, Front 1人, Back 2人)
         </span>
         <div className=" flex flex-col sm:flex-row  w-full justify-between">
