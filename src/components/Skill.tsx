@@ -11,7 +11,7 @@ export default function Skill() {
           ? "/portfolio/typescript.png"
           : "/typescript.png",
       content:
-        "• typed.t.ts 파일에서 제네릭 인터페이스를 선언해 자동완성을 통한 생산성 향상 및 타입 검증을 할 수 있습니다.",
+        "• 제네릭을 사용하거나 직접 타입을 선언하여 자동완성을 통해 생산성을 향상할 수 있고 오류에 대한 대처를 빠르게 처리할 수 있습니다.",
     },
     {
       skill: "HTML",
