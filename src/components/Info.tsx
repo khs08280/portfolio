@@ -81,6 +81,9 @@ export default function Info() {
               <li>
                 • 다양한 분야를 배우고 싶어하고 호기심이 많은 개발자입니다.
               </li>
+              <li>
+                • 다수의 아르바이트를 하며 커뮤니케이션 능력을 길렀습니다.
+              </li>
             </ul>
           </motion.div>
           <motion.div

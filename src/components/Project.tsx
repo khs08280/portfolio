@@ -173,13 +173,13 @@ export default function Project({ handleClick, isClicked }: ProjectProps) {
                 발급해 보안성을 높였습니다.
               </span>
             </div>
-            <a target="blank" href="https://github.com/khs08280/Book_Review">
+            <a href="/boox">
               <div
                 onClick={handleClick}
                 className="p-2 cursor-pointer mb-5 flex items-center px-4 bg-black rounded-md w-fit text-blue-300"
               >
-                README에서 자세히 보기{" "}
-                <IoMdArrowRoundForward className="size-6 mx-2" />{" "}
+                포트폴리오 자세히 보기{" "}
+                <IoMdArrowRoundForward className="size-6 ml-2" />{" "}
               </div>
             </a>
             <ul>
@@ -310,10 +310,10 @@ export default function Project({ handleClick, isClicked }: ProjectProps) {
                 가독성을 높였습니다.
               </span>
             </div>
-            <a target="black" href="https://github.com/khs08280/capstone">
+            <a target="_blank" href="https://github.com/khs08280/capstone">
               <div className="p-2 cursor-pointer mb-5 flex items-center px-4 bg-black rounded-md w-fit text-blue-300">
-                README에서 자세히 보기{" "}
-                <IoMdArrowRoundForward className="size-6 mx-2" />{" "}
+                ReadMe에서 자세히 보기{" "}
+                <IoMdArrowRoundForward className="size-6 ml-2" />{" "}
               </div>
             </a>
             <ul>
