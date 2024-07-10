@@ -173,7 +173,13 @@ export default function Project({ handleClick, isClicked }: ProjectProps) {
                 발급해 보안성을 높였습니다.
               </span>
             </div>
-            <a href="/boox">
+            <a
+              href={
+                process.env.STATE === "production"
+                  ? "https://khs08280.github.io/portfolio/boox"
+                  : "/boox"
+              }
+            >
               <div
                 onClick={handleClick}
                 className="p-2 cursor-pointer mb-5 flex items-center px-4 bg-black rounded-md w-fit text-blue-300"

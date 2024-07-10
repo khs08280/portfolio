@@ -92,7 +92,11 @@ export default function Boox() {
         <div className="flex flex-col lg:flex-row flex-wrap">
           <div className="flex flex-col items-center w-full ">
             <Image
-              src={"/캡처.PNG"}
+              src={
+                process.env.STATE === "production"
+                  ? "/portfolio/캡처.PNG"
+                  : "/캡처.PNG"
+              }
               alt={`홈화면`}
               width={600}
               height={400}
@@ -104,7 +108,11 @@ export default function Boox() {
           </div>
           <div className="flex mt-5 lg:mt-0 flex-col items-center w-full ">
             <Image
-              src={"/모달.PNG"}
+              src={
+                process.env.STATE === "production"
+                  ? "/portfolio/모달.PNG"
+                  : "/모달.PNG"
+              }
               alt={`모달 화면`}
               width={600}
               height={400}
@@ -116,7 +124,11 @@ export default function Boox() {
           </div>
           <div className="flex mt-5 lg:mt-0 flex-col items-center w-full ">
             <Image
-              src={"/다크모드.PNG"}
+              src={
+                process.env.STATE === "production"
+                  ? "/portfolio/다크모드.PNG"
+                  : "/다크모드.PNG"
+              }
               alt={`다크모드 화면`}
               width={600}
               height={400}
@@ -129,7 +141,11 @@ export default function Boox() {
 
           <div className="flex mt-5 lg:mt-0 flex-col items-center w-full  ">
             <Image
-              src={"/반응형1.PNG"}
+              src={
+                process.env.STATE === "production"
+                  ? "/portfolio/반응형1.PNG"
+                  : "/반응형1.PNG"
+              }
               alt={`모바일 반응형 화면`}
               width={600}
               height={400}
@@ -141,7 +157,11 @@ export default function Boox() {
           </div>
           <div className="flex mt-5 lg:mt-0 flex-col items-center w-full ">
             <Image
-              src={"/반응형2.PNG"}
+              src={
+                process.env.STATE === "production"
+                  ? "/portfolio/반응형2.PNG"
+                  : "/반응형2.PNG"
+              }
               alt={`테블릿 반응형 화면`}
               width={600}
               height={400}
@@ -250,7 +270,11 @@ export default function Boox() {
           홈페이지 접속 시 시퀀스
         </div>
         <Image
-          src="/홈페이지접속.png"
+          src={
+            process.env.STATE === "production"
+              ? "/portfolio/홈페이지접속.png"
+              : "/홈페이지접속.png"
+          }
           alt="홈페이지접속 시퀀스 다이어그램"
           width={600}
           height={400}
@@ -268,7 +292,11 @@ export default function Boox() {
           책 상세 페이지 방문 시 시퀀스
         </div>
         <Image
-          src="/책 모달 접속 및 리뷰 생성.png"
+          src={
+            process.env.STATE === "production"
+              ? "/portfolio/책 모달 접속 및 리뷰 생성.png"
+              : "/책 모달 접속 및 리뷰 생성.png"
+          }
           alt="책 모달 접속 및 리뷰 생성 시퀀스 다이어그램"
           width={600}
           height={400}
@@ -288,7 +316,11 @@ export default function Boox() {
           SNS 페이지 방문 시 시퀀스
         </div>
         <Image
-          src="/SNS 시퀀스.png"
+          src={
+            process.env.STATE === "production"
+              ? "/portfolio/SNS 시퀀스.png"
+              : "/SNS 시퀀스.png"
+          }
           alt="SNS 시퀀스 다이어그램"
           width={600}
           height={400}
@@ -319,7 +351,11 @@ export default function Boox() {
           프론트 - SNS 좋아요 여부 확인 코드
         </div>
         <Image
-          src="/SNS 좋아요 검증.PNG"
+          src={
+            process.env.STATE === "production"
+              ? "/portfolio/SNS 좋아요 검증.PNG"
+              : "/SNS 좋아요 검증.PNG"
+          }
           alt="SNS 좋아요 검증 사진"
           width={600}
           height={400}
@@ -338,7 +374,11 @@ export default function Boox() {
           백엔드 - 팔로우 컨트롤러 코드
         </div>
         <Image
-          src="/팔로우유저 코드.PNG"
+          src={
+            process.env.STATE === "production"
+              ? "/portfolio/팔로우유저 코드.PNG"
+              : "/팔로우유저 코드.PNG"
+          }
           alt="팔로우유저 코드 사진"
           width={600}
           height={400}
@@ -359,7 +399,11 @@ export default function Boox() {
           백엔드 - 재로그인 코드
         </div>
         <Image
-          src="/재로그인 코드.PNG"
+          src={
+            process.env.STATE === "production"
+              ? "/portfolio/재로그인 코드.PNG"
+              : "/재로그인 코드.PNG"
+          }
           alt="재로그인 코드 사진"
           width={600}
           height={400}
@@ -385,7 +429,11 @@ export default function Boox() {
         </span>
         <h2>Lighthouse로 측정한 사이트 성능</h2>
         <Image
-          src="/lighthouse-빌드후.PNG"
+          src={
+            process.env.STATE === "production"
+              ? "/portfolio/lighthouse-빌드후.PNG"
+              : "/lighthouse-빌드후.PNG"
+          }
           alt="lighthouse"
           width={400}
           height={300}
@@ -393,12 +441,25 @@ export default function Boox() {
         <div className="text-2xl font-semibold mb-5 mt-10">
           S3에 정적 파일을 미리 배포해 로딩 시간을 줄임
         </div>
-        <Image src="/s3배포.PNG" alt="s3배포" width={600} height={400} />
+        <Image
+          src={
+            process.env.STATE === "production"
+              ? "/portfolio/s3배포.PNG"
+              : "/s3배포.PNG"
+          }
+          alt="s3배포"
+          width={600}
+          height={400}
+        />
         <div className="text-2xl font-semibold mb-5 mt-10">
           CDN서비스인 CloudFront를 이용해 네트워크 지연을 줄임
         </div>
         <Image
-          src="/cloudfront배포.PNG"
+          src={
+            process.env.STATE === "production"
+              ? "/portfolio/cloudfront배포.PNG"
+              : "/cloudfront배포.PNG"
+          }
           alt="cloudfront배포"
           width={600}
           height={400}
@@ -407,7 +468,11 @@ export default function Boox() {
           layout파일마다 메타 데이터 생성
         </div>
         <Image
-          src="/메타데이터.PNG"
+          src={
+            process.env.STATE === "production"
+              ? "/portfolio/메타데이터.PNG"
+              : "/메타데이터.PNG"
+          }
           alt="메타데이터"
           width={600}
           height={400}
