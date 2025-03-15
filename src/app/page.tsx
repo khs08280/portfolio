@@ -1,11 +1,9 @@
 "use client";
-import Certificate from "@/components/Certificate";
 import Footer from "@/components/Footer";
-import Info from "@/components/Info";
 import MobileNav from "@/components/MobileNav";
 import Project from "@/components/Project";
 import SideNav from "@/components/SideNav";
-import Skill from "@/components/Skill";
+import TripTalk from "@/components/TripTalk";
 import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
 import { FaArrowUp } from "react-icons/fa";
@@ -34,11 +32,11 @@ export default function Home() {
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.5 }}
           >
+                    
             <MobileNav />
-            <Info />
-            <Skill />
+            <TripTalk />
+            {/* <Skill /> */}
             <Project handleClick={handleClick} isClicked={isClicked} />
-            <Certificate />
           </motion.div>
         </AnimatePresence>
         <Footer />

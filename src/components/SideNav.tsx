@@ -1,47 +1,36 @@
 "use client";
 import Image from "next/image";
 import { useEffect, useMemo, useState } from "react";
+import { FaGithub } from "react-icons/fa";
+import { Link } from "react-scroll";
 
 export default function SideNav() {
-  const list = useMemo(
-    () => ["INFO", "SKILL", "PROJECT", "CERTIFICATE & GITHUB"],
-    []
-  );
+  const list = useMemo(() => ["TRIPTALK", "OTHER PROJECTS"], []);
 
   const [activeSection, setActiveSection] = useState("");
 
   useEffect(() => {
-    const sectionObserver = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActiveSection(entry.target.id);
-          }
-        });
-      },
-      { threshold: 0.1, rootMargin: "-10% 0px -10% 0px" }
-    );
+    const handleScroll = () => {
+      const sections = list.map(item => 
+        document.getElementById(item.toLowerCase().replace(/ /g, "-"))
+      );
+      
+      const currentSection = sections.find(section => {
+        if (!section) return false;
+        const rect = section.getBoundingClientRect();
+        return rect.top <= 100 && rect.bottom >= 100;
+      });
 
-    list.forEach((item) => {
-      const sectionId = item
-        .toLowerCase()
-        .replace(/ & /g, "-")
-        .replace(/\s+/g, "-");
-      const section = document.getElementById(sectionId);
-      if (section) {
-        sectionObserver.observe(section);
+      if (currentSection) {
+        setActiveSection(currentSection.id);
       }
-    });
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    handleScroll();
 
     return () => {
-      list.forEach((item) => {
-        const sectionId = item
-          .toLowerCase()
-          .replace(/ & /g, "-")
-          .replace(/\s+/g, "-");
-        const section = document.getElementById(sectionId);
-        if (section) sectionObserver.unobserve(section);
-      });
+      window.removeEventListener("scroll", handleScroll);
     };
   }, [list]);
 
@@ -62,10 +51,7 @@ export default function SideNav() {
       </div>
       <ul className="text-lg text-center w-full space-y-2">
         {list.map((item: string, index: number) => {
-          const itemId = item
-            .toLowerCase()
-            .replace(/ & /g, "-")
-            .replace(/\s+/g, "-");
+          const itemId = item.toLowerCase().replace(/ /g, "-");
           const isActive = activeSection === itemId;
 
           return (
@@ -84,6 +70,22 @@ export default function SideNav() {
           );
         })}
       </ul>
+      <a
+        href="https://linen-ricotta-970.notion.site/bde65fd5104d4b00bb4d8757fdb106ec"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="text-white cursor-pointer hover:text-blue-300 transition-colors mt-4"
+      >
+        이력서 파일을 찾고 계시다면?
+      </a>
+      <a
+        href="https://github.com/khs08280"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="mt-4"
+      >
+        <FaGithub className="text-4xl text-white cursor-pointer hover:text-blue-300 transition-colors" />
+      </a>
     </nav>
   );
 }

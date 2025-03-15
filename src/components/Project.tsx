@@ -79,22 +79,23 @@ export default function Project({ handleClick, isClicked }: ProjectProps) {
     start: (isBack) => ({
       opacity: 0,
       x: isBack ? -400 : 400,
-      transition: {},
+      transition: { duration: 0.5, ease: "easeInOut" },
     }),
     middle: {
       opacity: 1,
       x: 0,
+      transition: { duration: 0.5, ease: "easeInOut" },
     },
     end: (isBack) => ({
       opacity: 0,
       x: isBack ? 400 : -400,
-      transition: {},
+      transition: { duration: 0.5, ease: "easeInOut" },
     }),
   };
 
   return (
     <section
-      id="project"
+      id="other-projects"
       className="flex flex-col px-1 sm:px-0 min-h-screen items-center py-60 relative bg-gray-50 "
     >
       <motion.h2
@@ -102,11 +103,11 @@ export default function Project({ handleClick, isClicked }: ProjectProps) {
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
       >
-        Projects
+        Other Projects
       </motion.h2>
-      <div className="w-full lg:w-2/3 mb-20 flex flex-col shadow-xl items-center p-10 rounded-lg space-y-5 border-2 border-solid border-blue-400">
+      <div className="w-full lg:w-2/3 mb-20 flex flex-col shadow-xl items-center p-10 rounded-lg space-y-5 border-2 border-solid border-blue-200">
         <h3 className="text-3xl font-bold text-center">
-          책 리뷰 및 커뮤니티 사이트
+          BOOX - 책 리뷰 및 커뮤니티 사이트
         </h3>
         <span className="text-black text-opacity-40 text-center">
           2024.05~2024.06 (1人 프로젝트)
@@ -254,9 +255,9 @@ export default function Project({ handleClick, isClicked }: ProjectProps) {
           </div>
         </div>
       </div>
-      <div className="w-full lg:w-2/3 flex flex-col items-center shadow-xl p-10 rounded-lg space-y-5 border-2 border-solid border-blue-400">
+      <div className="w-full lg:w-2/3 flex flex-col items-center shadow-xl p-10 rounded-lg space-y-5 border-2 border-solid border-blue-200">
         <h3 className="text-3xl font-bold  text-center sm:text-start">
-          개발자들을 위한 프로젝트 매칭 사이트
+          Synergy - 개발자들을 위한 프로젝트 매칭 사이트
         </h3>
         <span className="text-black text-opacity-40 text-center">
           2023.05~2023.11 (3人 프로젝트, Front 1人, Back 2人)

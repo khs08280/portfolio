@@ -1,5 +1,5 @@
 export default function Footer() {
-  const list = ["INFO", "SKILL", "PROJECT", "CERTIFICATE"];
+  const list = ["TRIPTALK", "OTHER-PROJECTS"];
   return (
     <footer
       id="info"
