@@ -183,7 +183,7 @@ export default function Project({ handleClick, isClicked }: ProjectProps) {
             >
               <div
                 onClick={handleClick}
-                className="p-2 cursor-pointer mb-5 flex items-center px-4 bg-black rounded-md w-fit text-blue-300"
+                className="p-2 hover:bg-gray-800 transition-colors cursor-pointer mb-5 flex items-center px-4 bg-black rounded-md w-fit text-blue-300"
               >
                 포트폴리오 자세히 보기{" "}
                 <IoMdArrowRoundForward className="size-6 ml-2" />{" "}
@@ -208,7 +208,7 @@ export default function Project({ handleClick, isClicked }: ProjectProps) {
                 </span>
                 <a
                   target="blank"
-                  className="underline text-blue-300   overflow-hidden whitespace-nowrap text-ellipsis"
+                  className="underline text-blue-300 hover:text-blue-400 transition-colors overflow-hidden whitespace-nowrap text-ellipsis"
                   style={{ width: "calc(100% - 10rem)" }}
                   href="https://github.com/khs08280/Book_Review"
                 >
@@ -318,7 +318,7 @@ export default function Project({ handleClick, isClicked }: ProjectProps) {
               </span>
             </div>
             <a target="_blank" href="https://github.com/khs08280/capstone">
-              <div className="p-2 cursor-pointer mb-5 flex items-center px-4 bg-black rounded-md w-fit text-blue-300">
+              <div className="p-2 hover:bg-gray-800 transition-colors cursor-pointer mb-5 flex items-center px-4 bg-black rounded-md w-fit text-blue-300">
                 ReadMe에서 자세히 보기{" "}
                 <IoMdArrowRoundForward className="size-6 ml-2" />{" "}
               </div>
@@ -351,7 +351,7 @@ export default function Project({ handleClick, isClicked }: ProjectProps) {
                 </span>
                 <a
                   target="blank"
-                  className="underline  text-blue-300  overflow-hidden whitespace-nowrap text-ellipsis"
+                  className="underline  text-blue-300 hover:text-blue-400 transition-colors overflow-hidden whitespace-nowrap text-ellipsis"
                   style={{ width: "calc(100% - 10rem)" }}
                   href="https://github.com/khs08280/capstone"
                 >
